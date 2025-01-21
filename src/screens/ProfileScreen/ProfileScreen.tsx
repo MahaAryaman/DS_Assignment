@@ -32,55 +32,24 @@ const ProfileScreen = ({navigation}: any) => {
   return (
     <TopRoundedView navigation={navigation}>
       <View style={styles.container}>
-        <View style={{padding: 20, backgroundColor: Colors.white()}}>
+        <View style={styles.subContainer}>
           <View>
-            <Text
-              style={{
-                color: Colors.black(),
-                fontFamily: Fonts.poppinsSemiBold,
-                fontSize: 16,
-              }}>
-              Your Email
-            </Text>
-            <Text
-              style={{
-                color: Colors.black(),
-                fontFamily: Fonts.poppinsBold,
-                fontSize: 16,
-              }}>
-              {profileData?.email}
-            </Text>
+            <Text style={styles.title}>Your Email</Text>
+            <Text style={styles.value}>{profileData?.email}</Text>
           </View>
-          <View style={{flexDirection: 'row', marginTop: 10}}>
+          <View style={styles.passwordContainer}>
             <View style={{flex: 8}}>
-              <Text
-                style={{
-                  color: Colors.black(),
-                  fontFamily: Fonts.poppinsSemiBold,
-                  fontSize: 16,
-                }}>
-                Your Password
-              </Text>
-              <Text
-                style={{
-                  color: Colors.black(),
-                  fontFamily: Fonts.poppinsBold,
-                  fontSize: 16,
-                }}>
+              <Text style={styles.title}>Your Password</Text>
+              <Text style={styles.value}>
                 {showPassword ? profileData?.password : 'XXXX'}
               </Text>
             </View>
             <TouchableOpacity
-              style={{flex: 2, justifyContent: 'center', alignItems: 'center'}}
+              style={styles.passwordToggle}
               onPress={() => {
                 setShowPassword(!showPassword);
               }}>
-              <Text
-                style={{
-                  color: Colors.blue1(),
-                  fontFamily: Fonts.poppinsBold,
-                  fontSize: 16,
-                }}>
+              <Text style={styles.toggleText}>
                 {showPassword ? 'Hide' : 'Show'}
               </Text>
             </TouchableOpacity>
@@ -99,4 +68,22 @@ export default ProfileScreen;
 
 const styles = StyleSheet.create({
   container: {flex: 1, justifyContent: 'center', padding: 20},
+  subContainer: {padding: 20, backgroundColor: Colors.white()},
+  title: {
+    color: Colors.black(),
+    fontFamily: Fonts.poppinsSemiBold,
+    fontSize: 16,
+  },
+  value: {
+    color: Colors.black(),
+    fontFamily: Fonts.poppinsBold,
+    fontSize: 16,
+  },
+  passwordContainer: {flexDirection: 'row', marginTop: 10},
+  passwordToggle: {flex: 2, justifyContent: 'center', alignItems: 'center'},
+  toggleText: {
+    color: Colors.blue1(),
+    fontFamily: Fonts.poppinsBold,
+    fontSize: 16,
+  },
 });

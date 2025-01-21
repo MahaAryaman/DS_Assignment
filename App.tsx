@@ -1,11 +1,8 @@
 import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
 import {AppProvider} from './src/context/AppProvider';
 import SafeAreaComponent from './src/components/SafeAreaComponent';
 
-interface AppProps {}
-
-const App = (props: AppProps) => {
+const App = () => {
   return (
     <AppProvider>
       <SafeAreaComponent edges={['top', 'right', 'left']}></SafeAreaComponent>
@@ -15,6 +12,3 @@ const App = (props: AppProps) => {
 
 export default App;
 
-const styles = StyleSheet.create({
-  container: {},
-});

@@ -27,12 +27,7 @@ const CommonButton = ({
       style={[styles.container, btnStyle]}
       disabled={disabled}
       onPress={onButtonPress}>
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'row',
-        }}>
+      <View style={styles.btnViewStyle}>
         {children}
         <Text style={[styles.title, textStyle]}>{title.toUpperCase()}</Text>
       </View>
@@ -56,5 +51,10 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.poppinsSemiBold,
     fontSize: 12,
     color: Colors.white(),
+  },
+  btnViewStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
   },
 });

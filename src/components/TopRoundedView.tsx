@@ -15,7 +15,6 @@ import Fonts from '../resources/theme/font';
 import CommonLoader from './CommonLoader';
 import {AppContext} from '../context/AppProvider';
 
-
 interface TopRoundedViewProps {
   showHeader?: boolean;
   style?: StyleProp<ViewStyle> | undefined;
@@ -78,48 +77,20 @@ const TopRoundedView = ({
   return (
     <>
       {showHeader && (
-        <View
-          style={{
-            backgroundColor: Colors.white(),
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingHorizontal: 6,
-            height: 90,
-            width: '100%',
-            paddingBottom: 10,
-          }}>
+        <View style={styles.headerContent}>
           {isHome ? (
             <>
-              <View style={{paddingHorizontal: 10}}>
-                <Text
-                  style={{
-                    color: Colors.black(),
-                    fontSize: 18,
-                    fontFamily: Fonts.poppinsSemiBold,
-                  }}>
-                  Welcome
-                </Text>
-                <Text
-                  style={{
-                    color: Colors.black(),
-                    fontSize: 18,
-                    fontFamily: Fonts.poppinsBold,
-                  }}>
+              <View style={styles.commonPadding}>
+                <Text style={styles.welcome}>Welcome</Text>
+                <Text style={styles.time}>
                   {moment().format('DD MMM YYYY')}
                 </Text>
               </View>
 
               <TouchableOpacity
                 onPress={navigateToScreen}
-                style={{paddingHorizontal: 10}}>
-                <Text
-                  style={{
-                    color: Colors.black(),
-                    fontSize: 18,
-                    fontFamily: Fonts.poppinsItalic,
-                    textDecorationLine: 'underline',
-                  }}>
+                style={styles.commonPadding}>
+                <Text style={styles.toggleText}>
                   {isUserLoggedIn ? 'Profile' : 'Login'}
                 </Text>
               </TouchableOpacity>
@@ -127,18 +98,11 @@ const TopRoundedView = ({
           ) : (
             <TouchableOpacity
               disabled={isLoading}
-              style={{paddingHorizontal: 10}}
+              style={styles.commonPadding}
               onPress={() => {
                 navigation.goBack();
               }}>
-              <Text
-                style={{
-                  color: Colors.black(),
-                  fontSize: 18,
-                  fontFamily: Fonts.poppinsSemiBold,
-                }}>
-                Back
-              </Text>
+              <Text style={styles.backText}>Back</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -171,18 +135,8 @@ const getStyles = (isInternetConnected: boolean) =>
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
     },
-    noInternetView: {
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
     loader: {
       width: '100%',
-    },
-    tabView: {
-      backgroundColor: Colors.white(),
-      marginTop: 30,
-      height: 60,
-      paddingHorizontal: 20,
     },
     snackBar: {
       position: 'absolute',
@@ -199,4 +153,36 @@ const getStyles = (isInternetConnected: boolean) =>
       fontSize: 14,
       color: Colors.white(),
     },
+    headerContent: {
+      backgroundColor: Colors.white(),
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingHorizontal: 6,
+      height: 90,
+      width: '100%',
+      paddingBottom: 10,
+    },
+    time: {
+      color: Colors.black(),
+      fontSize: 18,
+      fontFamily: Fonts.poppinsBold,
+    },
+    welcome: {
+      color: Colors.black(),
+      fontSize: 18,
+      fontFamily: Fonts.poppinsSemiBold,
+    },
+    backText: {
+      color: Colors.black(),
+      fontSize: 18,
+      fontFamily: Fonts.poppinsSemiBold,
+    },
+    toggleText: {
+      color: Colors.black(),
+      fontSize: 18,
+      fontFamily: Fonts.poppinsItalic,
+      textDecorationLine: 'underline',
+    },
+    commonPadding: {paddingHorizontal: 10},
   });

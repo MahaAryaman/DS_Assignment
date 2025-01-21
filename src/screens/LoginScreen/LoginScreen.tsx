@@ -82,23 +82,10 @@ const LoginScreen = ({navigation}: any) => {
 
   return (
     <TopRoundedView isLoading={isLoading} navigation={navigation}>
-      <View style={{justifyContent: 'center', flex: 1, paddingHorizontal: 20}}>
-        <View
-          style={{
-            padding: 20,
-            backgroundColor: Colors.white(),
-            borderRadius: 10,
-            elevation: 1,
-          }}>
+      <View style={styles.container}>
+        <View style={styles.subContainer}>
           <View style={{alignItems: 'center'}}>
-            <Text
-              style={{
-                color: Colors.black(),
-                fontFamily: Fonts.poppinsBold,
-                fontSize: 18,
-              }}>
-              Login
-            </Text>
+            <Text style={styles.title}>Login</Text>
           </View>
           <View>
             <CommonTextInput
@@ -122,18 +109,8 @@ const LoginScreen = ({navigation}: any) => {
             {password.length != 0 && (
               <TouchableOpacity
                 onPress={() => setTogglePassword(!togglePassword)}
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flex: 2,
-                  paddingHorizontal: 10,
-                }}>
-                <Text
-                  style={{
-                    color: Colors.blue1(),
-                    textDecorationLine: 'underline',
-                    fontSize: 18,
-                  }}>
+                style={styles.passBtn}>
+                <Text style={styles.passBtnText}>
                   {togglePassword ? 'Show' : 'Hide'}
                 </Text>
               </TouchableOpacity>
@@ -158,15 +135,7 @@ const LoginScreen = ({navigation}: any) => {
             />
           </View>
           <View>
-            <Text
-              style={{
-                color: Colors.red(),
-                fontFamily: Fonts.poppinsSemiBold,
-                fontSize: 14,
-                textAlign: 'center',
-              }}>
-              {errorMsg ?? ''}
-            </Text>
+            <Text style={styles.error}>{errorMsg ?? ''}</Text>
           </View>
         </View>
       </View>
@@ -177,5 +146,33 @@ const LoginScreen = ({navigation}: any) => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {justifyContent: 'center', flex: 1, paddingHorizontal: 20},
+  subContainer: {
+    padding: 20,
+    backgroundColor: Colors.white(),
+    borderRadius: 10,
+    elevation: 1,
+  },
+  title: {
+    color: Colors.black(),
+    fontFamily: Fonts.poppinsBold,
+    fontSize: 18,
+  },
+  passBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 2,
+    paddingHorizontal: 10,
+  },
+  passBtnText: {
+    color: Colors.blue1(),
+    textDecorationLine: 'underline',
+    fontSize: 18,
+  },
+  error: {
+    color: Colors.red(),
+    fontFamily: Fonts.poppinsSemiBold,
+    fontSize: 14,
+    textAlign: 'center',
+  },
 });
